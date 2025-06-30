@@ -1,0 +1,58 @@
+import java.util.Scanner;
+
+public class TemperatureConverter {
+
+    public static void convertFromCelsius(float temp) {
+        float fahrenheit = (temp * 9 / 5) + 32;
+        float kelvin = temp + 273.15f;
+        System.out.printf("Fahrenheit: %.2f °F\n", fahrenheit);
+        System.out.printf("Kelvin: %.2f K\n", kelvin);
+    }
+
+    public static void convertFromFahrenheit(float temp) {
+        float celsius = (temp - 32) * 5 / 9;
+        float kelvin = celsius + 273.15f;
+        System.out.printf("Celsius: %.2f °C\n", celsius);
+        System.out.printf("Kelvin: %.2f K\n", kelvin);
+    }
+
+    public static void convertFromKelvin(float temp) {
+        float celsius = temp - 273.15f;
+        float fahrenheit = (celsius * 9 / 5) + 32;
+        System.out.printf("Celsius: %.2f °C\n", celsius);
+        System.out.printf("Fahrenheit: %.2f °F\n", fahrenheit);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Temperature Conversion Program");
+        System.out.println("Enter the temperature value:");
+        float temperature = scanner.nextFloat();
+
+        System.out.println("Select the original unit:");
+        System.out.println("1. Celsius (°C)");
+        System.out.println("2. Fahrenheit (°F)");
+        System.out.println("3. Kelvin (K)");
+        int choice = scanner.nextInt();
+
+        switch (choice) {
+            case 1:
+                System.out.printf("Original: %.2f °C\n", temperature);
+                convertFromCelsius(temperature);
+                break;
+            case 2:
+                System.out.printf("Original: %.2f °F\n", temperature);
+                convertFromFahrenheit(temperature);
+                break;
+            case 3:
+                System.out.printf("Original: %.2f K\n", temperature);
+                convertFromKelvin(temperature);
+                break;
+            default:
+                System.out.println("Invalid choice! Please select 1, 2, or 3.");
+        }
+
+        scanner.close();
+    }
+}
